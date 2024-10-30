@@ -1,0 +1,81 @@
+<div class="frame-wrapper">
+    <h1 class="title">Más vendidos: {{this.wardrobeUuid}}</h1>
+    <p>En esta página encontrarás los elementos más vendidos de este ropero para que puedas planear tus órdenes y tu
+        capacidad de almacenamiento</p>
+
+    <p-calendar (ngModelChange)="this.triggerSearch($event)" [(ngModel)]="this.dates" [showButtonBar]="true" [maxDate]="this.maxDate" [readonlyInput]="true" selectionMode="range" placeholder="Filtra por fecha"></p-calendar>
+
+    @if (this.bestSellers$| async; as wardrobeSales) {
+    <p-table [value]="wardrobeSales" [paginator]="true" [rows]="6" [globalFilterFields]="['name', 'gender', 'stage']">
+        <ng-template pTemplate="caption">
+            <h2 class="text-gray-300">Más vendidos totales: {{wardrobeSales.length}}</h2>
+        </ng-template>
+        <ng-template pTemplate="header">
+            <tr>
+                <th>NOMBRE</th>
+                <th>GÉNERO</th>
+                <th>ETAPA</th>
+                <th>CANTIDAD</th>
+                <th>VALOR</th>
+            </tr>
+
+            <tr class="filters">
+                <th appendToBody="true">
+                    <p-columnFilter field="name" matchMode="in" [showMenu]="false" >
+                        <ng-template pTemplate="filter" let-value let-filter="filterCallback" >
+                            @if (this.typeCloth$| async; as typeCloth) {
+                            <p-multiSelect appendTo="body"  [ngModel]="value" [options]="typeCloth" optionLabel="name" optionValue="name"
+                                placeholder="Tipo de ropa" (onChange)="filter($event.value)" optionLabel="name">
+                            </p-multiSelect>
+                            }
+                        </ng-template>
+                    </p-columnFilter>
+                </th>
+
+                <th>
+                    <p-columnFilter field="gender" matchMode="equals" [showMenu]="false">
+                        <ng-template pTemplate="filter" let-value let-filter="filterCallback">
+                            @if (this.typeGender$ | async; as typeGender) {
+                            <p-dropdown appendTo="body" [ngModel]="value" [options]="typeGender" optionLabel="name" optionValue="name"
+                                (onChange)="filter($event.value)" placeholder="Selecciona género" [showClear]="true">
+                            </p-dropdown>
+                            }
+                        </ng-template>
+                    </p-columnFilter>
+                </th>
+
+                <th>
+                    <p-columnFilter field="stage" matchMode="equals" [showMenu]="false">
+                        <ng-template pTemplate="filter" let-value let-filter="filterCallback" >
+                            @if (this.typeStage$| async; as typeStage) {
+                            <p-multiSelect appendTo="body"  [ngModel]="value" [options]="typeStage" optionLabel="name" optionValue="name"
+                                placeholder="Etapa" (onChange)="filter($event.value)" optionLabel="name">
+                            </p-multiSelect>
+                            }
+                        </ng-template>
+                    </p-columnFilter>
+                </th>
+            </tr>
+        </ng-template>
+
+        <ng-template pTemplate="body" let-bs>
+            <tr>
+                <td>{{bs.name}}</td>
+                <td><span [ngClass]="bs.gender === 'Masculino'? 'male': 'female'">{{bs.gender}}</span></td>
+                <td>{{bs.stage}}</td>
+                <td>{{bs.quantity}}</td>
+                <td>{{bs.value | currency}}</td>
+            </tr>
+        </ng-template>
+
+        <ng-template pTemplate="emptymessage">
+            <tr>
+                <td class="text-center" colspan="8">No hay datos</td>
+            </tr>
+        </ng-template>
+
+    </p-table>
+    }@else {
+    <BancoRopa-loading-element />
+    }
+</div>

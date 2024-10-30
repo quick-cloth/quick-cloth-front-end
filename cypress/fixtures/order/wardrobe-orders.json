@@ -1,0 +1,60 @@
+[
+    {
+        "uuid": "1",
+        "wardrobeUuid": "1",
+        "orderDate": "2024-05-05",
+        "orderState": "RECEIVED",
+        "orderValue": 50,
+        "deliveryValue": 40,
+        "orderList":[
+            {
+                "clothe": {
+                    "uuid": "1",
+                    "typeClothe": {
+                        "name": "Pantalón",
+                        "uuid": "1"
+                    },
+                    "typeGender": {
+                        "name": "Femenino",
+                        "uuid": "2"
+                    },
+                    "typeStage": {
+                        "name": "Adulto",
+                        "uuid": "1"
+                    }
+                },
+                "orderValue": 50,
+                "deliveryValue": 40
+            }
+        ]
+    },
+    {
+        "uuid": "1",
+        "wardrobeUuid": "1",
+        "orderDate": "2024-05-05",
+        "orderState": "ON_WAY",
+        "orderValue": 30,
+        "deliveryValue": 25,
+        "orderList":[
+            {
+                "clothe": {
+                    "uuid": "1",
+                    "typeClothe": {
+                        "name": "Pantalón",
+                        "uuid": "1"
+                    },
+                    "typeGender": {
+                        "name": "Femenino",
+                        "uuid": "2"
+                    },
+                    "typeStage": {
+                        "name": "Adulto",
+                        "uuid": "1"
+                    }
+                },
+                "orderValue": 30,
+                "deliveryValue": 25
+            }
+        ]
+    }
+]

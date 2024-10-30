@@ -1,0 +1,32 @@
+:host {
+  @apply relative flex items-center justify-center sm:p-5 h-screen z-10;
+  background-image: url("/background.svg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.main{
+  @apply sm:flex-row flex-col flex h-full w-full;
+}
+
+.logo{
+  @apply sm:w-full h-1/3 sm:h-full;
+}
+.login-form{
+  @apply sm:w-full h-full flex sm:justify-end items-center;
+
+  form{
+    @apply max-w-2xl sm:mr-8 p-3 bg-white rounded-lg shadow-md sm:w-[50%] flex flex-col gap-3 justify-self-end;
+
+    p-password ::ng-deep{
+      .p-password,input{
+        @apply w-full;
+      }
+    }
+  }
+}
+
+.link{
+  @apply text-blue-700 font-bold hover:underline text-base cursor-pointer text-center;
+}

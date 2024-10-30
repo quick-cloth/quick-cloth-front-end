@@ -1,0 +1,18 @@
+@mixin order-status($bg-color, $color){
+    @apply p-2 font-bold rounded-2xl;
+    background-color: $bg-color;
+    color: $color
+}
+
+.on-way{
+    @include order-status(#eed20033, #EED200)
+}
+
+.delivered{
+    @include order-status(#00EE0C33, #00EE0C)
+}
+
+.received{
+    @include order-status(#5700EE33, #5700EE)
+}
+

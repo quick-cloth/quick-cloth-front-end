@@ -1,0 +1,41 @@
+@use "styles/table-style.scss";
+@use "styles/frame-wrapper.scss";
+@use "styles/overlay-panel.scss";
+
+.table-control {
+    @apply flex justify-between w-full;
+}
+
+.table-name {
+    @apply font-bold;
+}
+
+.table-email {
+    @apply font-light;
+}
+
+
+
+.progress-bar {
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    height: 2px;
+    background-color: #3498db;
+    width: 0;
+    animation: progress 0.5s linear infinite;
+}
+
+@keyframes progress {
+    0% {
+        width: 0%;
+    }
+
+    50% {
+        width: 90%;
+    }
+
+    100% {
+        width: 0%;
+    }
+}

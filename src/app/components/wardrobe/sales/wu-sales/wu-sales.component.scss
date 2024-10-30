@@ -1,0 +1,11 @@
+@use "styles/frame-wrapper.scss";
+@use "styles/table-style.scss";
+@use "styles/card.scss";
+
+.info{
+    @apply flex gap-2 flex-wrap;
+}
+
+.table-controls{
+    @apply flex justify-between gap-2;
+}

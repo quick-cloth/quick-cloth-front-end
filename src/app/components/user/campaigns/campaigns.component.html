@@ -1,0 +1,26 @@
+<div class="wrapper">
+    <h1 class="title">Campañas</h1>
+
+    <p-tabMenu [activeItem]="this.menuItems[0]" [model]="this.menuItems" />
+
+    @if (this.campaigns$ | async; as campaigns) {
+    @for (campaign of campaigns; track $index) {
+    <div class="card">
+        <div class="info">
+            <h1>{{campaign.name}}</h1>
+            <h1>{{campaign.creation_date | date:'dd/MM/yyy'}} - {{campaign.end_date| date:'dd/MM/yyy'}}</h1>
+        </div>
+
+        <div class="info">
+            <h2>{{campaign.typeClothe | internalType}} - {{campaign.typeStage | internalType}} - {{campaign.typeGender | internalType}}</h2>
+            <h2>Descuento: {{campaign.discount}}%</h2>
+        </div>
+        <p>{{campaign.message_campaign}}</p>
+    </div>
+    }@empty {
+    <h1>No hay campañas en estos momentos</h1>
+    }
+    }@else {
+        <BancoRopa-loading-element/>
+    }
+</div>

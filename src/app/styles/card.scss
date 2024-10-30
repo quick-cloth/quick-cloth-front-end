@@ -1,0 +1,12 @@
+.card{
+    @apply p-5 border border-gray-300 shadow-md rounded-xl flex flex-col gap-3 items-center w-72;
+    h1{
+        @apply flex gap-2 items-center font-bold;
+    }
+    h2{
+        @apply text-2xl;
+    }
+    h3{
+        @apply text-xs self-end mb-auto;
+    }
+}

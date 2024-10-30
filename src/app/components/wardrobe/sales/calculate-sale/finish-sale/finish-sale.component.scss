@@ -1,0 +1,17 @@
+.wrapper{
+    @apply flex flex-col w-full h-full gap-2 p-5;
+
+    .cel{
+        @apply flex justify-between w-full gap-2;
+    }
+}
+
+.end{
+    @apply flex flex-col gap-2 self-end mt-auto text-end;
+    h1{
+        @apply font-extrabold text-xl;
+    }
+    h2{
+        @apply font-medium text-xl
+    }
+}

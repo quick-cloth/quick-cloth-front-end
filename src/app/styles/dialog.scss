@@ -1,0 +1,10 @@
+::ng-deep{
+    .p-dialog-header{
+        @apply absolute top-0 right-0 pt-4 pr-6 pl-0 pb-0;
+        background: unset;
+    }
+
+    .p-dialog .p-dialog-content{
+        @apply rounded-md py-6 pt-4 pb-7;
+    }
+}

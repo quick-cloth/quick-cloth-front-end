@@ -1,0 +1,14 @@
+[
+    {
+        "name": "ON_WAY",
+        "uuid": "1"
+    },
+    {
+        "name": "DELIVERED",
+        "uuid": "2"
+    },
+    {
+        "name": "RECEIVED",
+        "uuid": "3"
+    }
+]

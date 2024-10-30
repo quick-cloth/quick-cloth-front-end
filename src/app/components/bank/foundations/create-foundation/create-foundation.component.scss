@@ -1,0 +1,30 @@
+@use "styles/frame-wrapper.scss";
+
+form{
+    @apply flex flex-col gap-8;
+    .form-grid{
+        @apply grid gap-5;
+        grid-template-columns: repeat(2, 1fr);
+
+        @media (max-width: 768px) {
+            &{
+                @apply justify-center;
+                grid-template-columns: repeat(1, 1fr);
+            }
+        }
+    }
+    .form-item{
+        @apply flex w-60 flex-col gap-3;
+        h1{
+            @apply font-bold
+        }
+    }
+
+    ::ng-deep .p-dropdown{
+        @apply w-60;
+    }
+}
+
+.buttons{
+    @apply flex gap-4 self-end p-10;
+}

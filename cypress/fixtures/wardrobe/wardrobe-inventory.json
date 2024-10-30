@@ -1,0 +1,62 @@
+[
+    {
+        "uuid": "1",
+        "clothe": {
+            "uuid": "1",
+            "typeClothe": {
+                "uuid": "1",
+                "name": "Pantalón"
+            },
+            "typeGender": {
+                "uuid": "1",
+                "name": "Femenino"
+            },
+            "typeStage": {
+                "uuid": "1",
+                "name": "Adulto"
+            }
+        },
+        "stock": 15,
+        "minimumStock": 20
+    },
+    {
+        "uuid": "2",
+        "clothe": {
+            "uuid": "2",
+            "typeClothe": {
+                "uuid": "2",
+                "name": "Camiseta"
+            },
+            "typeGender": {
+                "uuid": "2",
+                "name": "Masculino"
+            },
+            "typeStage": {
+                "uuid": "2",
+                "name": "Niño"
+            }
+        },
+        "stock": 55,
+        "minimumStock": 3
+    },
+    {
+        "uuid": "3",
+        "clothe": {
+            "uuid": "3",
+            "typeClothe": {
+                "uuid": "3",
+                "name": "Zapatos"
+            },
+            "typeGender": {
+                "uuid": "1",
+                "name": "Femenino"
+            },
+            "typeStage": {
+                "uuid": "3",
+                "name": "Bebé"
+            }
+        },
+        "stock": 100,
+        "minimumStock": 50
+    }
+]

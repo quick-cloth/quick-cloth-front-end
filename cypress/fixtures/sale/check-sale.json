@@ -1,0 +1,35 @@
+{
+    "totalValue": 500000,
+    "saleList": [
+        {
+            "clothUuid": "1",
+            "clotheName": "Camisa",
+            "typeGenderName": "Femenino",
+            "typeStageName": "Adulto",
+            "quantity": 2,
+            "value": 20000,
+            "campaignList": []
+        },
+        {
+            "clothUuid": "2",
+            "clotheName": "Pantalón",
+            "typeGenderName": "Femenino",
+            "typeStageName": "Adolescente",
+            "quantity": 10,
+            "value": 30000,
+            "campaignList": [
+                {
+                    "uuid": "1",
+                    "campaignName": "Navidad",
+                    "description": "Celebra la navidad junto a tu familia",
+                    "startDate": "2024-01-12",
+                    "endDate": "2024-31-12",
+                    "discount": 5,
+                    "valueDiscount": 12000
+                }
+            ]
+        }
+    ],
+    "payPointsValue": "10000",
+    "points": 0
+}

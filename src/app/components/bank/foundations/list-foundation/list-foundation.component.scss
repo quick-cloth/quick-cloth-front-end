@@ -1,0 +1,7 @@
+@use "styles/table-style.scss";
+@use "styles/frame-wrapper.scss";
+@use "styles/overlay-panel.scss";
+
+.table-control{
+    @apply flex justify-between w-full;
+}

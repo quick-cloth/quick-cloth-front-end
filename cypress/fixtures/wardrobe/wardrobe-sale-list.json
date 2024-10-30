@@ -1,0 +1,30 @@
+{
+    "uuid": "1",
+    "date": "2024-05-05",
+    "quantity": 50,
+    "price": 45000,
+    "payPoints": 1200,
+    "saleList": [
+        {
+            "clotheName": "Pantalón",
+            "typeGenderName": "Masculino",
+            "typeStageName": "Adulto",
+            "quantity": 10,
+            "value": 100000
+        },
+        {
+            "clotheName": "Camisa",
+            "typeGenderName": "Femenino",
+            "typeStageName": "Niña",
+            "quantity": 2,
+            "value": 35000
+        },
+        {
+            "clotheName": "Zapatos",
+            "typeGenderName": "Femenino",
+            "typeStageName": "Adolescente",
+            "quantity": 1,
+            "value": 20000
+        }
+    ]
+}

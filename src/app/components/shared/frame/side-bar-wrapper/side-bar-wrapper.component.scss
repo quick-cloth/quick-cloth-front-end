@@ -1,0 +1,14 @@
+.wrapper{
+    @apply h-screen p-5;
+    transition: all 0.5s ease;
+}
+
+.wrapper-not-collapsed{
+    @apply ml-80;
+    width: calc(100% - 20rem);
+}
+
+.wrapper-collapsed{
+    @apply ml-20;
+    width: calc(100% - 5rem);
+}

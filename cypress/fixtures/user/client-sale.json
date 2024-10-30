@@ -1,0 +1,30 @@
+[
+    {
+        "uuid": "1",
+        "saleDate": "2024-05-05",
+        "value": 50000,
+        "payPoints": 1200,
+        "wardrobe": {
+            "name": "Ropero 1",
+            "address": "In your dreams",
+            "city":{
+                "name": "Bogotá"
+            }
+        },
+        "earnedPoints": 5
+    },
+    {
+        "uuid": "2",
+        "saleDate": "2024-10-11",
+        "value": 10000,
+        "payPoints": 0,
+        "wardrobe": {
+            "name": "Ropero 2",
+            "address": "In your mind",
+            "city":{
+                "name": "Villeta"
+            }
+        },
+        "earnedPoints": 1000
+    }
+]

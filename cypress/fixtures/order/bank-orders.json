@@ -1,0 +1,23 @@
+[
+    {
+        "uuid": "1",
+        "wardrobeName": "Ropero 1",
+        "orderDate": "2024-05-05",
+        "quantity": 12,
+        "status": "DELIVERED"
+    },
+    {
+        "uuid": "2",
+        "wardrobeName": "Ropero 2",
+        "orderDate": "2024-11-15",
+        "quantity": 120,
+        "status": "ON_WAY"
+    },
+    {
+        "uuid": "3",
+        "wardrobeName": "Ropero 1",
+        "orderDate": "2024-10-10",
+        "quantity": 37,
+        "status": "RECEIVED"
+    }
+]

@@ -1,0 +1,59 @@
+<div class="frame-wrapper">
+    <h1 class="title">Crear campaña</h1>
+    <p>Para crear una campaña debes proporcionar los siguientes datos, una campaña está anclada a un medio de
+        comunicación, un valor de descuento que aplica en los roperos, una prenda a la que quieres aplicar a ese
+        descuento y lo más importante, una fecha de inicio y fin.</p>
+
+    <form [formGroup]="createCampaignForm">
+
+        <div class="form-item">
+            <h1>Nombre</h1>
+            <input type="text" pInputText formControlName="name" data-cy="name">
+        </div>
+
+        <div class="form-item">
+            <h1>Fecha de Inicio/Fin</h1>
+            <p-calendar formControlName="dates" [showButtonBar]="true" selectionMode="range" [readonlyInput]="true" data-cy="dates"/>
+        </div>
+
+        <div class="form-item">
+            <h1>Tipo de campaña</h1>
+            <p-dropdown formControlName="typeCampaignUuid" [options]="this.typeCampaign" optionLabel="name"
+                optionValue="uuid" placeholder="Tipo de campaña" data-cy="campaign-type"/>
+        </div>
+
+        <div class="form-item">
+            <h1>Tipo de prenda</h1>
+            <p-dropdown formControlName="typeClotheUuid" [options]="this.typeClothe" optionLabel="name"
+                optionValue="uuid" placeholder="Tipo de prenda" data-cy="cloth-type"/>
+        </div>
+
+        <div class="form-item">
+            <h1>Género</h1>
+            <p-dropdown formControlName="typeGenderUuid" [options]="this.typeGender" optionLabel="name"
+                optionValue="uuid" placeholder="Género" data-cy="gender-type" />
+        </div>
+
+        <div class="form-item">
+            <h1>Etapa</h1>
+            <p-dropdown formControlName="typeStageUuid" [options]="this.typeStage" optionLabel="name" optionValue="uuid"
+                placeholder="Etapa" data-cy="stage-type"/>
+        </div>
+
+        <div class="form-item">
+            <h1>Descuento</h1>
+            <p-inputNumber formControlName="discount" suffix="%" [min]="0" [max]="100"  data-cy="discount"/>
+        </div>
+
+
+        <div class="form-item last">
+            <h1>Mensaje</h1>
+            <textarea rows="5" cols="30" pInputTextarea formControlName="message_campaign" data-cy="message"></textarea>
+        </div>
+    </form>
+    <div class="buttons">
+        <p-button [label]="'Cancelar'" [severity]="'danger'" [routerLink]="['/bank/campaigns']"></p-button>
+        <p-button [label]="'Crear'" [severity]="'success'" [disabled]="this.createCampaignForm.invalid"
+            (onClick)="this.createCampaign()" [loading]="this.loading()" data-cy="send"></p-button>
+    </div>
+</div>

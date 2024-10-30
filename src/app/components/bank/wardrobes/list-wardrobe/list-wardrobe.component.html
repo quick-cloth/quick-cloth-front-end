@@ -1,0 +1,63 @@
+<div class="frame-wrapper">
+    <h1 class="title">Lista de roperos</h1>
+    <p>En esta pestaña puedes encontrar toda la lista de roperos asociados a este banco, puedes filtrar por nombre,
+        crear uno nuevo o modificar alguno con los controles de acción en la tabla.</p>
+
+    <div class="table-control">
+        <input type="text" pInputText placeholder="Buscar por nombre" [formControl]="this.searchBar"/>
+        <p-button label="Añadir" rounded="true" [routerLink]="['create']"></p-button>
+    </div>
+    @let wardrobeList = this.wardrobeList$ | async;
+    @if(wardrobeList && !this.searching()) {
+        <p-table [value]="wardrobeList || []" [paginator]="true" [rows]="6">
+            <ng-template pTemplate="caption">
+                <h2 class="text-gray-300">Roperos totales: {{wardrobeList?.length}}</h2>
+            </ng-template>
+
+            <ng-template pTemplate="header">
+                <tr>
+                    <th>NOMBRE</th>
+                    <th>STOCK</th>
+                    <th>VENTAS</th>
+                    <th>ACCIONES</th>
+                </tr>
+            </ng-template>
+
+            <ng-template pTemplate="body" let-wardrobe>
+                <tr>
+                    <td>
+                        <h1 class="table-name">{{wardrobe.name}} </h1>
+                        <h2 class="table-email">{{wardrobe.city.name}}, {{wardrobe.address}}</h2>
+                    </td>
+                    <td>{{wardrobe.stock}}</td>
+                    <td>{{wardrobe.valueSales | currency}}</td>
+                    <td>
+                        <ng-icon [color]="'gray'" size="32px" name="lucideEllipsis" (click)="op.toggle($event)"></ng-icon>
+                        <p-overlayPanel #op>
+                            <div class="table-overlay">
+                                <div class="overlay-item" [routerLink]="[wardrobe.uuid]">
+                                    <ng-icon [color]="'blue'" size="32px" name="lucideEye"></ng-icon>
+                                    Visualizar
+                                </div>
+
+                                <div class="overlay-item" [routerLink]="['create']" [queryParams]="{modify: wardrobe.uuid}">
+                                    <ng-icon [color]="'orange'" size="32px" name="lucideSquarePen"></ng-icon>
+                                    Modificar
+                                </div>
+                            </div>
+                        </p-overlayPanel>
+                    </td>
+                </tr>
+            </ng-template>
+
+            <ng-template pTemplate="emptymessage">
+                <tr>
+                    <td class="text-center" colspan="8">No se han encontrado roperos</td>
+                </tr>
+            </ng-template>
+
+        </p-table>
+    }@else {
+        <BancoRopa-loading-element/>
+    }
+</div>

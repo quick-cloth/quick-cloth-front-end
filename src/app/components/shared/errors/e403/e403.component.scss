@@ -1,0 +1,11 @@
+:host {
+    @apply relative flex items-center justify-center sm:p-5 h-screen z-10;
+    background-image: url("/background.svg");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.main{
+    @apply flex flex-col justify-center items-center gap-2;
+}

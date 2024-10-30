@@ -1,0 +1,33 @@
+@use "styles/frame-wrapper.scss";
+@use "styles/dialog.scss";
+
+
+form{
+    @apply flex flex-col gap-8;
+    h1{
+        @apply font-bold text-lg;
+    }
+    .form-item{
+        @apply flex w-fit flex-col gap-3;
+        h1{
+            @apply font-bold
+        }
+    }
+
+
+    ::ng-deep .p-dropdown{
+        @apply w-60;
+    }
+}
+
+.buttons{
+    @apply flex gap-4 self-end p-10;
+}
+
+::ng-deep{
+    p-inputNumber.doc-valid{
+        input{
+            @apply border-green-700;
+        }
+    }
+}

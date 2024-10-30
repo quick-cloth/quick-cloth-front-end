@@ -1,0 +1,51 @@
+<div class="frame-wrapper">
+    <h1 class="title">@if (this.modifyWardrobe) {
+        Modificar #{{this.modifyWardrobe}}}@else {Crear}</h1>
+
+    @if (!modifyWardrobe) {
+        <p>Para crear un ropero debes llenar completamente el siguiente formulario, necesitas un nombre, dirección y la ubicación en la que lo deseas crear.</p>
+    }@else {
+        <p>Si quieres modificar este ropero puedes cambiar su nombre y diección relativa</p>
+    }
+
+    <form [formGroup]="createWardrobeForm">
+        <div class="form-item">
+            <h1>Nombre</h1>
+            <input type="text" pInputText formControlName="name" data-cy="name"/>
+        </div>
+
+        <div class="location-sub-form">
+            @if (!this.modifyWardrobe) {
+                <div class="form-item">
+                    <h1>Departamento</h1>
+                    @if (this.allDepartments$ | async ; as allDepartments) {
+                        <p-dropdown [options]="allDepartments" optionLabel="name" optionValue="uuid" (onChange)="getCities($event)" data-cy="dpto"/>
+                    }            
+                </div>
+    
+                <div class="form-item">
+                    <h1>Ciudad</h1>
+                    @if (this.allCities$ | async; as cities) {
+                        <p-dropdown formControlName="cityUuid" [options]="cities" optionLabel="name" optionValue="uuid" data-cy="city"/>
+                    }@else {
+                        <p-dropdown formControlName="cityUuid" />
+                    }
+                </div>
+            }
+
+            <div class="form-item">
+                <h1>Dirección</h1>
+                <input type="text" pInputText formControlName="address" data-cy="address"/>
+            </div>
+        </div>
+
+    </form>
+
+    <div class="buttons">
+        <p-button [label]="'Cancelar'" [severity]="'danger'" [routerLink]="['/bank/wardrobes']"></p-button>
+        <p-button [label]="this.modifyWardrobe? 'Modificar': 'Crear'"  [severity]="this.modifyWardrobe? 'warning': 'success'" [disabled]="this.createWardrobeForm.invalid"
+            (onClick)="this.checkForm()" [loading]="this.loading()" data-cy="send"
+        ></p-button>
+    </div>
+   
+</div>

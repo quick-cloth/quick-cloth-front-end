@@ -1,0 +1,16 @@
+{
+    "uuid": "1",
+    "name": "Ropero de prueba",
+    "address": "Calle 80A",
+    "stock": 55,
+    "valueSales": 500000,
+    "city": {
+        "uuid": "1",
+        "name": "Ciudad de prueba",
+        "department": {
+            "uuid": "1",
+            "name": "Dpto de prueba"
+        }
+    },
+    "unitSold": 34
+}

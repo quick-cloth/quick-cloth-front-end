@@ -1,0 +1,37 @@
+<div class="wrapper">
+    <h1 class="font-extrabold text-4xl">Resumen de venta</h1>
+
+    <p-accordion [multiple]="true">
+        @for (item of this.saleCheck().saleList; track $index) {
+            <p-accordionTab [header]="item.clotheName">
+                <div class="cel">
+                    <h1>Cantidad: {{item.quantity}}</h1>
+                    <h1>{{item.value| currency}}</h1>
+
+                </div>
+
+                <div class="cel">
+                    @for (campaign of item.campaignList; track $index) {
+
+                        <div class="flex flex-col text-left gap-1">
+                            <h1>{{campaign.campaignName}}</h1>
+                            <h1>{{campaign.description}}</h1>
+                        </div>
+                        <h1>{{campaign.valueDiscount | currency}}</h1>
+                    }
+                </div>
+            </p-accordionTab>
+        }
+    </p-accordion>
+
+
+    <div class="end">
+        <h1>Puntos redimidos</h1>
+        <h2>{{this.saleCheck().payPointsValue}}</h2>
+        <h1>Puntos Acumulados</h1>
+        <h2>{{this.saleCheck().newPoints}}</h2>
+        <h1>Total</h1>
+        <h2>{{this.saleCheck().totalValue | currency}}</h2>
+        <p-button class="mt-4" label="Pagar" (onClick)="this.finishSale()" [loading]="this.loading()"></p-button>
+    </div>
+</div>

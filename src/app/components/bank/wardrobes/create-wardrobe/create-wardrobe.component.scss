@@ -1,0 +1,32 @@
+@use "styles/frame-wrapper.scss";
+
+form{
+    @apply flex flex-col gap-4 flex-1;
+
+    .form-item{
+        @apply flex w-60 flex-col gap-3;
+    }
+
+    .location-sub-form{
+        @apply flex flex-row gap-4 flex-wrap;
+    }
+    h1{
+        @apply font-bold
+    }
+
+    p-calendar{
+        @apply w-60
+    }
+
+    input{
+        @apply w-60;
+    }
+
+    ::ng-deep .p-dropdown{
+        @apply w-60;
+    }
+}
+
+.buttons{
+    @apply flex gap-4 self-end p-10;
+}

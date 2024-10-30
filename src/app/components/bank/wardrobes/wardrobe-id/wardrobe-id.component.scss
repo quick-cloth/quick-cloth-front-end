@@ -1,0 +1,7 @@
+@use "styles/frame-wrapper.scss";
+@use "styles/table-style.scss";
+@use "styles/card.scss";
+
+.summary-section{
+    @apply flex gap-4 flex-wrap;
+}

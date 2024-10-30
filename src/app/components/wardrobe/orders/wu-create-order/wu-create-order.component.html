@@ -1,0 +1,48 @@
+<div class="frame-wrapper">
+    <h1 class="title">Pedidos/Crear</h1>
+    <p>Acá es posible crear una órden de ropa para que tu banco te envié suministros. Una vez enviado el banco de ropa
+        revisará tu petición y te enviará los suministros que hayan disponibles.</p>
+    <form [formGroup]="this.createOrderForm">
+        <div class="contents" formArrayName="clothes">
+            @for (form of this.getClothFormArray().controls; track $index) {
+            <div class="inner-form" [formGroupName]="$index">
+                <div class="contents" [formGroupName]="'types'">
+                    <div class="form-item">
+                        <h1>Tipo de prenda</h1>
+                        @if (this.clothType$ | async; as clothType) {
+                        <p-dropdown [options]="clothType" optionLabel="name" optionValue="uuid" placeholder="Prenda"
+                            formControlName="typeClotheUuid" data-cy="cloth-type" />
+                        }
+                    </div>
+                    <div class="form-item">
+                        <h1>Etapa</h1>
+                        @if (this.stageType$ | async; as stageType) {
+                        <p-dropdown [options]="stageType" optionLabel="name" optionValue="uuid" placeholder="Etapa"
+                            formControlName="typeStageUuid" data-cy="stage-type" />
+                        }
+                    </div>
+                    <div class="form-item">
+                        <h1>Género</h1>
+                        @if (this.genderType$ | async; as genderType) {
+                        <p-dropdown [options]="genderType" optionLabel="name" optionValue="uuid" placeholder="Género"
+                            formControlName="typeGenderUuid" data-cy="gender-type" />
+                        }
+                    </div>
+                </div>
+
+                <div class="form-item" formGroupName='cloth'>
+                    <h1>Cantidad</h1>
+                    <p-inputNumber [min]="0" formControlName="quantity" data-cy="quantity" />
+                </div>
+            </div>
+            <div class="buttons">
+                <p-button label="Eliminar" severity="danger" (onClick)="this.deleteClothForm($index)"
+                    [disabled]="this.getClothFormArray().controls.length === 1"></p-button>
+                <p-button label="Añadir" severity="success" (onClick)="this.addClothForm()"></p-button>
+            </div>
+            }
+        </div>
+    </form>
+    <p-button class="self-end" label="Crear" [loading]="this.loading()" (onClick)="this.createOrder()"
+        [disabled]="this.createOrderForm.invalid" data-cy="send"></p-button>
+</div>

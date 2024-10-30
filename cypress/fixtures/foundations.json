@@ -1,0 +1,52 @@
+[
+    {
+        "uuid": "1",
+        "name": "Fundación test 1",
+        "nit": 123,
+        "phone": 123,
+        "typeMeetUs": {
+            "name": "Redes sociales",
+            "uuid": "1"
+        },
+        "contactUser": {
+            "uuid": "1",
+            "name": "Contact user 1",
+            "last_name": "last name 1",
+            "phone": 123,
+            "email": "test@mail.com"
+        },
+        "city":{
+            "name": "Bogotá",
+            "uuid": "1",
+            "department": {
+                "name": "Cundinamarca",
+                "uuid": "1"
+            }
+        }
+    },
+    {
+        "uuid": "2",
+        "name": "Fundación test 2",
+        "nit": 1234,
+        "phone": 1234,
+        "typeMeetUs": {
+            "name": "SMS",
+            "uuid": "2"
+        },
+        "contactUser": {
+            "uuid": "2",
+            "name": "Tester user",
+            "last_name": "last name 2",
+            "phone": 1234,
+            "email": "tester@mail.com"
+        },
+        "city":{
+            "name": "Medellín",
+            "uuid": "2",
+            "department": {
+                "name": "Antioquía",
+                "uuid": "2"
+            }
+        }
+    }
+]

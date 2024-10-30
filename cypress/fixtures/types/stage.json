@@ -1,0 +1,14 @@
+[
+    {
+        "name": "Adulto",
+        "uuid": "1"
+    },
+    {
+        "name": "Niño",
+        "uuid": "2"
+    },
+    {
+        "name": "Bebé",
+        "uuid": "3"
+    }
+]

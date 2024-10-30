@@ -1,0 +1,23 @@
+[
+    {
+        "name": "Camisa",
+        "gender": "Femenino",
+        "stage": "Adulto",
+        "quantity": 500,
+        "value": 450000
+    },
+    {
+        "name": "Pantalón",
+        "gender": "Femenino",
+        "stage": "Adulto",
+        "quantity": 700,
+        "value": 800000
+    },
+    {
+        "name": "Zapatos",
+        "gender": "Masculino",
+        "stage": "Niño",
+        "quantity": 250,
+        "value": 570000
+    }
+]

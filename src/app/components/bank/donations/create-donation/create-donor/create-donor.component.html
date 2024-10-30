@@ -1,0 +1,36 @@
+<div class="frame">
+    <h1 class="font-extrabold text-3xl border-b-2 pb-2">Crear donante</h1>
+    <form [formGroup]="createDonorForm">
+        <div class="form-item">
+            <h1>Documento</h1>
+            <p-inputNumber formControlName="documentNumber" [min]="0" data-cy="document"/>
+        </div>
+        <div class="form-item">
+            <h1>Tipo de documento</h1>
+            <p-dropdown formControlName="typeDocumentUuid" [options]="this.documentType" optionLabel="name"
+                optionValue="uuid" data-cy="document-type"></p-dropdown>
+        </div>
+
+        <div class="form-item">
+            <h1>Nombre</h1>
+            <input type="text" pInputText formControlName="name" data-cy="name">
+        </div>
+
+        <div class="form-item">
+            <h1>Apellido</h1>
+            <input type="text" pInputText formControlName="lastName" data-cy="last-name">
+        </div>
+
+        <div class="form-item">
+            <h1>Correo</h1>
+            <input type="text" pInputText formControlName="email" data-cy="email">
+        </div>
+
+        <div class="form-item">
+            <h1>Teléfono</h1>
+            <input type="text" pInputText formControlName="phone" [min]="0" data-cy="tel"/>
+        </div>
+    </form>
+    <p-button class="self-end" label="Enviar" severity="success" [disabled]="!this.createDonorForm.valid"
+        (onClick)="this.createDonor()" [loading]="this.loading()" data-cy="send"/>
+</div>

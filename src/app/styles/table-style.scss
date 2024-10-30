@@ -1,0 +1,53 @@
+::ng-deep {
+    table.p-datatable-table{
+        @apply rounded-lg overflow-hidden;
+    }
+    .p-datatable-header{
+        background: unset;
+        border: unset;
+    }
+
+    .p-datatable-thead{
+        @apply rounded-lg overflow-hidden;
+        th{
+            background-color: var(--banco-ropa-yellow);
+
+            &:first-child{
+                @apply rounded-tl-2xl;
+            }
+            &:last-child{
+                @apply rounded-tr-2xl;
+            }
+        }
+    }
+    tr th{
+        @apply text-left p-4;
+    }
+
+    tr.filters{
+        th{
+            background: unset;
+        }
+    }
+
+
+    .p-datatable-wrapper{
+        @apply border-t-0 shadow-md shadow-gray-500/50 rounded-2xl mb-4;
+    }
+    .p-datatable-tbody{
+        @apply border border-gray-300 ;
+    }
+
+    p-paginator{
+        @apply flex w-full items-center justify-center;
+
+        .p-paginator-bottom{
+            @apply w-fit shadow-2xl shadow-gray-500/50 rounded-lg;
+        }
+    }
+
+    td{
+        border: unset;
+        border-width: unset;
+    }
+}

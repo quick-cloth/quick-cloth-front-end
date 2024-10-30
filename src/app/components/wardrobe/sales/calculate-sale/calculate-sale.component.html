@@ -1,0 +1,102 @@
+<p-dialog [draggable]="false" [modal]="true" [draggable]="false" [(visible)]="createClientDialog">
+    <BancoRopa-create-client (outputDocument)="this.outputDocument($event)" />
+</p-dialog>
+
+<p-dialog [draggable]="false" [modal]="true" [draggable]="false" [(visible)]="finishSaleDialog">
+    @if (this.checkResponse) {
+        <BancoRopa-finish-sale [isPayingWithPoints]="this.isPayingWithPoints.value!" [saleCheck]="this.checkResponse" [saleRequest]="this.request"/>
+    }
+</p-dialog>
+
+<div class="frame-wrapper">
+    <h1 class="title">Calcular venta</h1>
+    <p>Para llevar a cabo una venta llena completamente el siguiente formulario con los elementos del inventario de tu ropero.</p>
+
+    <form [formGroup]="this.saleForm">
+        <h1>Información del cliente</h1>
+
+        <div class="form-item">
+            @let documentControl = this.saleForm.get("userUuid");
+            <h1>Cédula (0 para venta anónima)</h1>
+            <div class="flex gap-2">
+                <p-inputNumber formControlName="userUuid" [min]="0" 
+                    [ngClass]="documentControl?.valid ? 'doc-valid': '' " data-cy="document"/>
+                <p-button label="Crear cliente" (onClick)="this.showClientDialog()"></p-button>
+            </div>
+            @if(documentControl?.errors && !this.saleForm.pristine){
+            <h2 data-cy="document-feedback">No se ha encontrado la cédula</h2>
+            }
+            @else if (documentControl?.value === 0) {
+            <h2 data-cy="document-feedback">Venta anónima</h2>
+            }@else if (!documentControl?.errors && this.clientInfo) {
+            <h2 data-cy="document-feedback">Cliente: {{this.clientInfo.name}} {{this.clientInfo.lastName}}</h2>
+            }
+        </div>
+
+        <h1>Información de la venta</h1>
+
+        <div class="flex flex-col items-center w-fit border p-3 rounded-md shadow-sm" formArrayName="saleList">
+            @for (subForm of this.saleListFormArray; track $index) {
+            <div class="flex flex-wrap gap-3 " [formGroupName]="$index">
+                <div class="contents" formGroupName="local">
+                    <div class="form-item">
+                        <h1>Tipo de prenda</h1>
+                        @if (this.avaliableTypeClothes$| async; as avaliableTypeClothes) {
+                            <p-dropdown formControlName="typeCloth" [options]="this.avaliableTypeClothes" optionLabel="name" optionValue="uuid"
+                                placeholder="Prenda" data-cy="cloth-type"/>
+                        }@else {
+                            <p-dropdown placeholder="Prenda" [disabled]="true"></p-dropdown>
+                        }
+                    </div>
+                    <div class="form-item">
+                        <h1>Etapa</h1>
+                        @if (this.avaliableTypeStage.get($index)| async; as avaliableTypeStage) {
+                            <p-dropdown formControlName="typeStage" [options]="avaliableTypeStage" optionLabel="name" optionValue="uuid"
+                            placeholder="Etapa" data-cy="stage-type"/>
+                        }@else {
+                            <p-dropdown placeholder="Etapa" [disabled]="true" data-cy="stage-type"></p-dropdown>
+                        }
+                    </div>
+                    <div class="form-item">
+                        <h1>Género</h1>
+                        @if (this.avaliableTypeGender.get($index)| async; as avaliableTypeGender) {
+                            <p-dropdown formControlName="typeGender" [options]="avaliableTypeGender" optionLabel="name" optionValue="uuid"
+                            placeholder="Género" data-cy="gender-type"/>
+                        }@else {
+                            <p-dropdown [disabled]="true" placeholder="Género" data-cy="gender-type"></p-dropdown>
+                        }
+                    </div>
+                </div>
+
+                <div class="contents" formGroupName="server">
+                    <div class="form-item">
+                        <h1>Cantidad</h1>
+                        <p-inputNumber formControlName="quantity" [min]="0" [max]="" data-cy="quantity"/>
+                    </div>
+                    <div class="form-item">
+                        <h1>Precio por unidad</h1>
+                        <p-inputNumber formControlName="value" [min]="0" mode="currency" currency="COP" locale="es-CO"
+                            [minFractionDigits]="0" data-cy="price"/>
+                    </div>
+                </div>
+            </div>
+            <div class="buttons">
+                <p-button label="Quitar" severity="danger" (onClick)="this.deleteSaleItemSubForm($index)"
+                    [disabled]="this.saleListFormArray.length === 1"></p-button>
+                <p-button label="Añadir prenda" (onClick)="this.addSaleItemSubForm()"></p-button>
+            </div>
+            }
+        </div>
+    </form>
+
+    <div class="flex justify-between items-center">
+        <div class="flex flex-col justify-center items-center">
+            <h1 class="font-bold">¿Pagar con puntos?</h1>
+            <p-checkbox [formControl]="isPayingWithPoints" binary="true" />
+        </div>
+        <div class="buttons">
+            <p-button [label]="'Crear'" [severity]="'success'" [disabled]="this.saleForm.invalid || this.saleForm.status === 'PENDING'"
+                (onClick)="this.checkSale()" [loading]="this.loading()" data-cy="send"></p-button>
+        </div>
+    </div>
+</div>

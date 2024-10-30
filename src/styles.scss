@@ -1,0 +1,16 @@
+@layer tailwind-base, primeng, tailwind-utilities;
+
+@layer tailwind-base {
+    @tailwind base;
+}
+
+@layer tailwind-utilities {
+    @tailwind components;
+    @tailwind utilities;
+}
+
+:root{
+    --banco-ropa-blue: #02509B;
+    --banco-ropa-blue-darker: #002F5E;
+    --banco-ropa-yellow: #FFCB17;
+}

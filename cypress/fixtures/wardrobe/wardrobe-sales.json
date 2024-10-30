@@ -1,0 +1,23 @@
+[
+    {
+        "uuid": "1",
+        "date": "2024-05-05",
+        "quantity": 50,
+        "price": 45000,
+        "payPoints": 1200
+    },
+    {
+        "uuid": "2",
+        "date": "2024-07-07",
+        "quantity": 150,
+        "price": 450000,
+        "payPoints": 1000
+    },
+    {
+        "uuid": "3",
+        "date": "2024-10-10",
+        "quantity": 100,
+        "price": 958000,
+        "payPoints": 5000
+    }
+]

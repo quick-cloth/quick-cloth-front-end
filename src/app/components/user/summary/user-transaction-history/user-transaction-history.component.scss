@@ -1,0 +1,28 @@
+.wrapper{
+    @apply flex flex-col gap-2 p-2;
+
+    .title{
+        @apply font-extrabold text-2xl;
+    }
+
+    .card{
+        @apply flex justify-between items-center rounded-md shadow-lg px-5 py-3;
+    }
+    .info{
+        @apply flex flex-col gap-2;
+        h1{
+            @apply font-bold;
+        }
+    }
+    .controls{
+        @apply flex flex-wrap gap-2 justify-between items-center;
+    }
+
+    .transactions{
+        @apply flex flex-col w-full;
+
+        .controls{
+            @apply flex gap-2 w-fit;
+        }
+    }
+}

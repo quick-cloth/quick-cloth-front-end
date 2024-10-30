@@ -1,0 +1,98 @@
+<div class="frame-wrapper">
+    <h1 class="title">
+        @if (!this.modifyFoundation) {
+            Crear fundación
+        }@else {
+            Modificar fundación: {{this.modifyFoundation}}
+        }
+    </h1>
+    <p>En este formulario podrás establecer los datos de la fundación que deseas crear/modificar a tu gusto, todos los campos son necesarios</p>
+
+    <form [formGroup]="createFoundationForm">
+
+        <div class="form-grid">
+            <div class="form-item">
+                <h1>Nombre</h1>
+                <input type="text" pInputText formControlName="name" data-cy="name"/>
+            </div>
+
+            <div class="form-item">
+                <h1>Email</h1>
+                <input type="text" pInputText formControlName="email" data-cy="email"/>
+            </div>
+
+            <div class="form-item">
+                <h1>Nombre del representante legal</h1>
+                <input type="text" pInputText formControlName="legalRepresentative" data-cy="legal-rep"/>
+            </div>
+
+            <div class="form-item">
+                <h1>NIT</h1>
+                <p-inputNumber formControlName="nit" [min]="0" [useGrouping]="false" placeholder="NIT" data-cy="nit"/>
+            </div>
+
+            <div class="form-item">
+                <h1>Teléfono</h1>
+                <p-inputNumber formControlName="phone" [useGrouping]="false" placeholder="" data-cy="tel"/>
+            </div>
+
+            <div class="form-item">
+                <h1>¿Cómo se enteró?</h1>
+                @if (this.typeMeet$ | async; as typeMeet) {
+                    <p-dropdown formControlName="typeMeetUsUuid" [options]="typeMeet" optionLabel="name" optionValue="uuid" data-cy="meet-type"/>
+                }
+            </div>
+        </div>
+
+        @if (!this.modifyFoundation) {
+            <h1 class="font-bold border-t-2 pt-2">Ubicación</h1>
+        <div class="flex gap-2 flex-wrap">
+            <div class="form-item">
+                <h1>Departamento</h1>
+                @if (this.allDepartments$ | async ; as allDepartments) {
+                    <p-dropdown [options]="allDepartments" optionLabel="name" optionValue="uuid" (onChange)="getCities($event)" data-cy="dpto"/>
+                }
+            </div>
+            <div class="form-item">
+                <h1>Ciudad</h1>
+                @if (this.allCities$ | async; as cities) {
+                    <p-dropdown formControlName="cityUuid" [options]="cities" optionLabel="name" optionValue="uuid" data-cy="city"/>
+                }@else {
+                    <p-dropdown formControlName="cityUuid" data-cy="city"/>
+                }
+            </div>
+        </div>
+        }
+
+        <h1 class="font-bold border-t-2 pt-2">Persona de contacto</h1>
+        <div class="form-grid" formGroupName="contactUser">
+            <div class="form-item">
+                <h1>Nombre</h1>
+                <input type="text" pInputText formControlName="name" data-cy="contact-name"/>
+            </div>
+
+            <div class="form-item">
+                <h1>Teléfono</h1>
+                <p-inputNumber formControlName="phone" [min]="0" [useGrouping]="false" placeholder="" data-cy="contact-tel"/>
+            </div>
+
+            <div class="form-item">
+                <h1>Apellido</h1>
+                <input type="text" pInputText formControlName="last_name" data-cy="contact-last-name"/>
+            </div>
+
+            <div class="form-item">
+                <h1>Email</h1>
+                <input type="text" pInputText formControlName="email" data-cy="contact-email"/>
+            </div>
+        </div>
+    </form>
+
+    <div class="buttons">
+        <p-button [label]="'Cancelar'" [severity]="'danger'" [routerLink]="['/bank/foundations']"></p-button>
+        <p-button [label]="this.modifyFoundation ? 'Modificar' : 'Crear' "  
+            [severity]="this.modifyFoundation? 'warning': 'success'" [disabled]="this.createFoundationForm.invalid"
+            (onClick)="this.checkForm()" [loading]="this.loading()" data-cy="send"
+        ></p-button>
+    </div>
+</div>

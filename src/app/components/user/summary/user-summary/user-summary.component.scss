@@ -1,0 +1,48 @@
+.top-bar{
+    @apply flex gap-4 items-center py-1 px-2 bg-[var(--banco-ropa-blue)] shadow-xl sticky top-0 z-10 text-white;
+    h1{
+        @apply font-bold text-xl  md:block hidden;
+    }
+    img{
+        @apply w-10 h-auto;
+    }
+
+    .nav{
+        @apply flex gap-3 items-center;
+    }
+
+    .nav-item{
+        @apply flex gap-1 items-center py-1 px-3 rounded-md cursor-pointer;
+
+        &:hover{
+            @extend .nav-selected;
+        }
+    }
+    .nav-selected{
+        @apply bg-white text-black;
+    }
+
+    .logout {
+        @apply ml-auto hover:bg-red-900 hover:text-white;
+    }
+}
+
+.wrapper{
+    @apply w-full flex flex-col gap-2 p-4;
+
+    .title{
+        @apply font-extrabold text-2xl;
+    }
+}
+
+.card{
+    @apply rounded-lg shadow-lg flex flex-col p-3;
+}
+
+.summary{
+    @apply flex gap-1 justify-between items-center relative;
+
+    p-tabView{
+        @apply w-full;
+    }
+}

@@ -1,0 +1,23 @@
+@use "styles/frame-wrapper.scss";
+
+form{
+    @apply flex flex-col gap-2 w-fit border p-3 rounded-md shadow-sm;
+
+    .inner-form{
+        @apply flex flex-wrap gap-4;
+    }
+
+    .form-item{
+        @apply flex flex-col gap-2;
+    }
+}
+
+.buttons{
+    @apply self-end flex gap-2;
+}
+
+::ng-deep{
+    .p-dropdown{
+        @apply w-60;
+    }
+}

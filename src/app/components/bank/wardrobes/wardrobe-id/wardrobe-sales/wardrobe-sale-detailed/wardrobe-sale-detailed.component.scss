@@ -1,0 +1,7 @@
+@use "styles/frame-wrapper.scss";
+@use "styles/table-style.scss";
+@use "styles/gender.scss";
+
+h2{
+    @apply font-normal text-xl;
+}

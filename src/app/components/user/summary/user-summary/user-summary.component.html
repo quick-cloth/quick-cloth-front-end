@@ -1,0 +1,35 @@
+<p-toast/>
+<div class="top-bar">
+    <img src="corporacion-md-logo.png" alt="logo" srcset="">
+    <div class="nav">
+        <div class="nav-item" [routerLink]="['/client', 'transactions']" [routerLinkActive]="'nav-selected'">
+            <ng-icon size="1.5rem" name="lucideBadgeDollarSign"></ng-icon>
+            <h1>Transacciones</h1>
+        </div>
+
+        <div class="nav-item" [routerLink]="['/client', 'campaigns']" [routerLinkActive]="'nav-selected'">
+            <ng-icon size="1.5rem" name="lucideCirclePercent"></ng-icon>
+            <h1>Campañas</h1>
+        </div>
+    </div>
+
+    <div class="nav-item logout" (click)="this.logout()">
+        <h1>Salir</h1>
+        <ng-icon size="1.5rem" name="lucideLogOut"></ng-icon>
+    </div>
+</div>
+
+<div class="wrapper">
+    @let clientInfo = this.clientInfo$ | async;
+    <h1 class="title">Hola, {{clientInfo?.name}}</h1>
+
+    <div class="card">
+        <h1>Tus puntos</h1>
+        <div class="flex gap-2 items-center">
+            <ng-icon name="lucidePiggyBank"></ng-icon>
+            <h2>{{clientInfo?.points}}</h2>
+        </div>
+    </div>
+
+    <router-outlet/>
+</div>

@@ -1,0 +1,38 @@
+<div class="wrapper">
+
+    <h1 class="title">Historial de transacciones</h1>
+    @let clientSales = this.clientSales$ | async;
+    <div class="controls">
+        <h1 class="font-bold text-gray-500">Transacciones: {{clientSales?.length}}</h1>
+    </div>
+
+    <div class="flex gap-1 justify-between w-full">
+        <p-tabMenu [activeItem]="this.menuItems[0]" [model]="this.menuItems" />
+        <p-calendar (ngModelChange)="this.triggerSearch($event)" [(ngModel)]="this.dates" [showButtonBar]="true"
+            [maxDate]="this.maxDate" [readonlyInput]="true" selectionMode="range"
+            placeholder="Filtra por fecha"></p-calendar>
+    </div>
+    @if (this.showSales$ | async; as showSales) {
+    @for (transaction of showSales; track $index) {
+    <div class="card">
+        <div class="info text-left">
+            <h1>{{transaction.wardrobe.name}}</h1>
+            <h2>{{transaction.saleDate | date: 'dd/MM/yyyy'}}</h2>
+        </div>
+
+        <div class="info text-right">
+            <h1>Puntos</h1>
+            @if (transaction.payPoints > 0) {
+            <h2 class="text-red-600">-{{transaction.payPoints}}</h2>
+            }@else {
+            <h2 class="text-green-600">+{{transaction.earnedPoints}}</h2>
+            }
+        </div>
+    </div>
+    }@empty {
+    <h1>No tienes transacciones, aprovecha nuestras campañas y descuentos para ti. No dejes pasar la oportunidad</h1>
+    }
+    }@else {
+    <BancoRopa-loading-element />
+    }
+</div>

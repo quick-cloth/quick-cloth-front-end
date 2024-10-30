@@ -1,0 +1,37 @@
+<div class="sidebar" [ngClass]="isCollapsed() ? 'sidebar-collapsed' : '' ">
+    <div class="logo-container">
+        <img src="corporacion-md-logo.png" alt="">
+        <ng-icon size="32px" [name]="getArrowStatus()" (click)="toggleCollapse()"></ng-icon>
+    </div>
+
+    <div class="user-info">
+        <p-avatar [label]="this.userInfo?.username?.substring(0,2)"  [style]="{ 'background-color': '#ece9fc', color: '#000000' }"
+            size="large" shape="circle" />
+
+        @if (!isCollapsed()) {
+            <h1>{{this.userInfo?.username}}</h1>
+            <h2>{{this.userInfo?.email}}</h2>
+        }
+    </div>
+
+    <div class="nav-list">
+        @for (item of navItems; track $index) {
+            <div class="nav-item" [routerLink]="[this.routerPrefix,item.routerLink]" [routerLinkActive]="'nav-selected'" >
+                <ng-icon [color]="'white'" size="24px" [name]="item.icon"></ng-icon>
+
+                @if (!isCollapsed()) {
+                    <h1>{{item.name}}</h1>
+                }
+            </div>
+        }
+    </div>
+
+    <div class="foot-info">
+        <div class="nav-item cursor-pointer hover:bg-red-900 rounded-md" (click)="this.logout()">
+            <ng-icon [color]="'white'" size="24px" name="lucideLogOut"></ng-icon>
+            @if (!isCollapsed()) {
+                <h1>Cerrar sesión</h1>
+            }
+        </div>
+    </div>
+</div>

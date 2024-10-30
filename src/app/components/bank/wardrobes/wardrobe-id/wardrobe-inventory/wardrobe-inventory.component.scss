@@ -1,0 +1,19 @@
+@use "styles/table-style.scss";
+@use "styles/gender.scss";
+
+.double {
+    @apply table-cell;
+    vertical-align: middle;
+
+    span{
+        @apply w-fit;
+    }
+
+    > *{
+        @apply block mb-2 h-9;
+
+        &:not(:last-child){
+            @apply mb-2;
+        }
+    }
+}

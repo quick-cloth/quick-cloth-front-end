@@ -1,0 +1,10 @@
+{
+    "uuid": "1",
+    "name": "Test user",
+    "lastName": "last tester",
+    "userName": "tester",
+    "email": "test@correo.com",
+    "document": 12345,
+    "phone": 12,
+    "points": 5000
+}

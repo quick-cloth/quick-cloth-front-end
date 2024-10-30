@@ -1,0 +1,72 @@
+<p-dialog [(visible)]="this.donorSubFormVisible" [modal]="true" [draggable]="false" [resizable]="false">
+    <BancoRopa-create-donor (outputDocument)="this.donorDialogClosed($event)"></BancoRopa-create-donor>
+</p-dialog>
+<div class="frame-wrapper">
+    <h1 class="title">Crear Donación</h1>
+    <p>Este formulario ayuda a crear una nueva donación para el banco, el campo de cédula puede estar vacío e indicará
+        una donación anónima. Si la persona quiere ser identificada, ingresa su cédula en el campo o crea un registro para
+        él.</p>
+
+    <form [formGroup]="this.donationForm">
+        <h1>Información del donante (opcional)</h1>
+
+        <div class="form-item">
+            @let documentControl = this.donationForm.get("userUuid");
+            <h1>Cédula</h1>
+            <div class="flex gap-2">
+                <p-inputNumber formControlName="userUuid" [min]="0"
+                    [ngClass]="documentControl?.valid ? 'doc-valid': '' " data-cy="document"/>
+                <p-button label="Crear donante" (onClick)="this.showDonorDialog()"
+                    [disabled]="documentControl?.valid && !documentControl?.dirty"></p-button>
+            </div>
+            @if(documentControl?.errors){
+            <h2 data-cy="donor-info">No se ha encontrado la cédula</h2>
+            }@else if (documentControl?.valid && documentControl?.value === null ) {
+            <h2 data-cy="donor-info">La donación será anónima</h2>
+            }@else if (this.donorInfo) {
+            <h2 data-cy="donor-info">Donante: {{this.donorInfo.name}} {{this.donorInfo.lastName}}</h2>
+            }
+        </div>
+
+        <h1>Información de la donación </h1>
+
+        <div class="flex flex-col items-center w-fit border p-3 rounded-md shadow-sm" formArrayName="clothesDonation">
+            @for (subForm of this.clothesFormArray; track $index) {
+            <div class="flex flex-wrap gap-3 " [formGroupName]="$index">
+                <div class="form-item">
+                    <h1>Tipo de prenda</h1>
+                    <p-dropdown formControlName="typeClotheUuid" [options]="(this.typeClothe$ | async) || []"
+                        optionLabel="name" optionValue="uuid" placeholder="Prenda" data-cy="cloth-type"/>
+                </div>
+                <div class="form-item">
+                    <h1>Tipo de etapa</h1>
+                    <p-dropdown formControlName="typeStageUuid" [options]="(this.typeStage$ | async) || []"
+                        optionLabel="name" optionValue="uuid" placeholder="Etapa" data-cy="stage-type"/>
+                </div>
+                <div class="form-item">
+                    <h1>Género</h1>
+                    <p-dropdown formControlName="typeGenderUuid" [options]="(this.typeGender$ | async) || []"
+                        optionLabel="name" optionValue="uuid" placeholder="Género" data-cy="gender-type"/>
+                </div>
+                <div class="form-item">
+                    <h1>Cantidad</h1>
+                    <p-inputNumber formControlName="quantity" [min]="0" data-cy="quantity"/>
+                </div>
+            </div>
+            <div class="buttons">
+                <p-button label="Quitar" severity="danger" (onClick)="this.deleteClotheSubForm($index)"
+                    [disabled]="this.clothesFormArray.length === 1"></p-button>
+                <p-button label="Añadir prenda" (onClick)="this.addClotheSubForm()" data-cy="add-cloth"></p-button>
+            </div>
+            }
+
+
+        </div>
+    </form>
+
+    <div class="buttons">
+        <p-button [label]="'Cancelar'" [severity]="'danger'" [routerLink]="['/bank/donations']"></p-button>
+        <p-button [label]="'Crear'" [severity]="'success'" [disabled]="this.donationForm.invalid || this.donationForm.status === 'PENDING'"
+            (onClick)="this.createDonation()" [loading]="this.loading()" data-cy="send"></p-button>
+    </div>
+</div>

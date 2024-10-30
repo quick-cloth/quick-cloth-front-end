@@ -1,0 +1,16 @@
+.frame{
+    @apply flex flex-col gap-4;
+}
+
+form{
+    @apply grid gap-2;
+    grid-template-columns: repeat(2, 1fr);
+
+    h1{
+        @apply font-bold;
+    }
+
+    ::ng-deep .p-dropdown{
+        @apply w-60
+    }
+}

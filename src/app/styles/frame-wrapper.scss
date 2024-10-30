@@ -1,0 +1,12 @@
+.frame-wrapper {
+    @apply min-h-full flex flex-col gap-4 pb-10;
+
+
+    p {
+        @apply text-xl;
+    }
+}
+
+.title {
+    @apply font-extrabold text-3xl;
+}

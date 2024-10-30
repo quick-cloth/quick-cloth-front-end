@@ -1,0 +1,22 @@
+[
+    {
+        "uuid": "1",
+        "campaignName": "Campaña 1",
+        "description": "Descripción de la campaña 1 rey",
+        "startDate": "2024-05-05",
+        "endDate": "2024-07-07",
+        "discount": 10,
+        "valueDiscount": 10
+    },
+
+    {
+        "uuid": "2",
+        "campaignName": "Campaña 2",
+        "description": "Descripción de la campaña 2",
+        "startDate": "2024-10-10",
+        "endDate": "2024-11-11",
+        "discount": 5,
+        "valueDiscount": 5
+    }
+    
+]

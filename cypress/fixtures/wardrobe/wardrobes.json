@@ -1,0 +1,47 @@
+[
+    {
+        "uuid": "8c4044e6-7fb2-42e9-8936-b123dfe45c7e",
+        "name": "Ropero 1",
+        "address": "calle 3 #4434",
+        "stock": 30,
+        "valueSales": "700692.0",
+        "city": "Bogotá D.C",
+        "unitSold": null
+    },
+    {
+        "uuid": "9f0c0c28-582b-4b93-9d15-d605d24e80e3",
+        "name": "Ropero 2",
+        "address": "calle 3 #434",
+        "stock": 55,
+        "valueSales": "55000.0",
+        "city": "Bogotá D.C",
+        "unitSold": null
+    },
+    {
+        "uuid": "7bd10eaf-31f9-45ca-8cfc-8c95b7b9c482",
+        "name": "Test Ropero",
+        "address": "Creado desde el front #97-D",
+        "stock": 12,
+        "valueSales": "130000.0",
+        "city": "Medellin",
+        "unitSold": null
+    },
+    {
+        "uuid": "75d46abd-4ef1-469d-8eb5-5adaa19ec22c",
+        "name": "Ropero discord",
+        "address": "Discord 10pm",
+        "stock": 300,
+        "valueSales": "140000.0",
+        "city": "Bogotá D.C",
+        "unitSold": null
+    },
+    {
+        "uuid": "4c98c3b0-0732-4d83-991d-bf6ae782bdd6",
+        "name": "Ropero #3",
+        "address": "No he tocado este codigo en 1 semana",
+        "stock": 67,
+        "valueSales": "900000.0",
+        "city": "Facatativá",
+        "unitSold": null
+    }
+]

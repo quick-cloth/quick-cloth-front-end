@@ -1,0 +1,6 @@
+@use "styles/frame-wrapper.scss";
+@use "styles/table-style.scss";
+
+.table-control{
+    @apply flex justify-end w-full;
+}

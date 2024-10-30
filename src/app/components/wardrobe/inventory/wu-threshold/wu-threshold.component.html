@@ -1,0 +1,52 @@
+<div class="frame-wrapper">
+    <h1 class="title">Umbrales de stock</h1>
+    <p>Aca puedes configurar alertas para el inventario, te ayudará a estar pendiente de las existencias de las prendas
+        para que puedas realizar pedidos a tiempo.</p>
+
+    @if (this.avaliableClothes$ | async; as avaliableClothes) {
+    <form [formGroup]="this.thresholdForm">
+        <p-table [value]="avaliableClothes" [paginator]="true" [rows]="10">
+            <ng-template pTemplate="caption">
+                <h2 class="text-gray-300">Elementos totales: {{avaliableClothes.length}}</h2>
+            </ng-template>
+            <ng-template pTemplate="header">
+                <tr>
+                    <th>TIPO</th>
+                    <th>GÉNERO</th>
+                    <th>ETAPA</th>
+                    <th>UMBRAL ACTUAL</th>
+                    <th>NUEVO UMBRAL</th>
+                </tr>
+            </ng-template>
+            <ng-template pTemplate="body" let-item let-rowIndex="rowIndex" formGroupName="thresholds">
+                @let cloth = item.clothe;
+                <tr>
+                    <td>{{cloth.typeClothe | internalType}}</td>
+                    <td><span [ngClass]="cloth.typeGender.name === 'Masculino' ? 'male': 'female' ">
+                            {{cloth.typeGender | internalType}}
+                        </span></td>
+                    <td>{{cloth.typeStage | internalType}}</td>
+                    <td>{{item.minimumStock}}</td>
+                    <td [formGroupName]="rowIndex">
+                        <p-inputNumber [min]="0" formControlName="minimumStock" />
+                    </td>
+                </tr>
+            </ng-template>
+            <ng-template pTemplate="emptymessage">
+                <tr>
+                    <td class="text-center" colspan="8">No se han encontrado órdenes</td>
+                </tr>
+            </ng-template>
+        </p-table>
+    </form>
+    }@else {
+    <BancoRopa-loading-element />
+    }
+
+    <div class="buttons">
+        <p-button [label]="'Cancelar'" [severity]="'danger'" [routerLink]="['/wardrobe/inventory']"></p-button>
+        <p-button [label]="'Enviar'" [severity]="'success'" [disabled]="this.thresholdForm.invalid || this.thresholdForm.pristine"
+            (onClick)="this.sendThresholds()" [loading]="this.loading()" data-cy="send"></p-button>
+    </div>
+
+</div>

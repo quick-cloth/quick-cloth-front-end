@@ -1,0 +1,6 @@
+@use "styles/frame-wrapper.scss";
+@use "styles/table-style.scss";
+@use "styles/gender.scss";
+.buttons{
+    @apply flex gap-4 self-end p-10;
+}

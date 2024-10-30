@@ -1,0 +1,33 @@
+@use 'styles/frame-wrapper.scss';
+
+form {
+    @apply grid gap-4;
+    grid-template-columns: repeat(auto-fill, 18rem);
+
+    
+
+    .form-item {
+        @apply flex w-60 flex-col gap-3;
+    }
+
+    h1 {
+        @apply font-bold
+    }
+
+    .textareainput {
+        @apply w-2/3;
+    }
+
+    ::ng-deep .p-dropdown {
+        @apply w-60;
+    }
+
+    .last{
+        @apply w-full;
+        grid-column: 1/-1
+    }
+}
+
+.buttons {
+    @apply flex gap-4 self-end p-10;
+}
