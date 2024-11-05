@@ -5,7 +5,7 @@
     @if(wardrobeSales && !this.loading()) {
         <p-table [value]="wardrobeSales || []" [paginator]="true" [rows]="6">
             <ng-template pTemplate="caption">
-                <h2 class="text-gray-300">Ventas totales: {{wardrobeSales?.length}}</h2>
+                <h2 class="text-gray-300">Aportes totales: {{wardrobeSales?.length}}</h2>
             </ng-template>
             <ng-template pTemplate="header">
                 <tr>
@@ -27,7 +27,7 @@
     
             <ng-template pTemplate="emptymessage">
                 <tr>
-                    <td class="text-center" colspan="8">No se han encontrado ventas</td>
+                    <td class="text-center" colspan="8">No se han encontrado aportes</td>
                 </tr>
             </ng-template>
     

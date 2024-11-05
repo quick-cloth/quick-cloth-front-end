@@ -2,7 +2,7 @@
     @let wardrobe = this.wardrobe$ | async ;
     @if (wardrobe) {
     <h1 class="title">{{wardrobe.name}}, {{wardrobe.address}} ({{wardrobe.city.name}})</h1>
-    <p>Se muestra información detallada del ropero con la identificación de arriba, abajo puedes encontrar el inventario y las ventas de este ropero, además de filtrar por nombre e identificación</p>
+    <p>Se muestra información detallada del ropero con la identificación de arriba, abajo puedes encontrar las existencias de prendas y los aportes de este ropero, además de filtrar por nombre e identificación</p>
 
     <div class="summary-section">
 
@@ -12,7 +12,7 @@
         </div>
 
         <div class="card">
-            <h1><ng-icon size="24px" name="lucidePackage" /> Unidades Vendidas</h1>
+            <h1><ng-icon size="24px" name="lucidePackage" /> Unidades entregadas</h1>
             <h2>{{wardrobe.unitSold}}</h2>
             <h3>{{this.month}}</h3>
         </div>
@@ -29,7 +29,7 @@
 
 
     <p-tabView>
-        <p-tabPanel header="Inventario" >
+        <p-tabPanel header="Prendas" >
             <ng-template pTemplate="content">
                 @if (wardrobe) {
                     <BancoRopa-wardrobe-inventory [wardrobeUUID]="wardrobe.uuid" />
@@ -38,7 +38,7 @@
                 }
             </ng-template>
         </p-tabPanel>
-        <p-tabPanel header="Ventas" #sales>
+        <p-tabPanel header="Aportes" #sales>
             <ng-template pTemplate="content">
                 @defer (on immediate ;prefetch on timer(1s)) {
                     @if (wardrobe) {
