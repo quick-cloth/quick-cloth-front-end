@@ -82,7 +82,7 @@ export class SidebarComponent {
     {
       routerLink: "sales",
       icon: "lucideBadgeDollarSign",
-      name: "Ventas"
+      name: "Aportes"
     }
   ]
 

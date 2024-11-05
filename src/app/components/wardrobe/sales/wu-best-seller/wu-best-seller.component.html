@@ -1,6 +1,6 @@
 <div class="frame-wrapper">
-    <h1 class="title">Más vendidos: {{this.wardrobeUuid}}</h1>
-    <p>En esta página encontrarás los elementos más vendidos de este ropero para que puedas planear tus órdenes y tu
+    <h1 class="title">Más solicitados: {{this.wardrobeUuid}}</h1>
+    <p>En esta página encontrarás los elementos más solicitados en los aportes de este ropero para que puedas planear tus órdenes y tu
         capacidad de almacenamiento</p>
 
     <p-calendar (ngModelChange)="this.triggerSearch($event)" [(ngModel)]="this.dates" [showButtonBar]="true" [maxDate]="this.maxDate" [readonlyInput]="true" selectionMode="range" placeholder="Filtra por fecha"></p-calendar>
@@ -8,7 +8,7 @@
     @if (this.bestSellers$| async; as wardrobeSales) {
     <p-table [value]="wardrobeSales" [paginator]="true" [rows]="6" [globalFilterFields]="['name', 'gender', 'stage']">
         <ng-template pTemplate="caption">
-            <h2 class="text-gray-300">Más vendidos totales: {{wardrobeSales.length}}</h2>
+            <h2 class="text-gray-300">Más solicitados totales: {{wardrobeSales.length}}</h2>
         </ng-template>
         <ng-template pTemplate="header">
             <tr>
